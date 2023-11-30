@@ -3,8 +3,9 @@
 
 #include <QSettings>
 #include <QSerialPortInfo>
+#include <QMessageBox>
 
-#define version "SerialToUDP 0.1"
+#define version "SerialToUDP 0.2"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -25,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(mSensor,&SensorDialog::dataReceived,this,&MainWindow::readData);
     QObject::connect(mSensor,&SensorDialog::errorString,this,&MainWindow::errorMsg);
     QObject::connect(ui->actionQuitter,&QAction::triggered,this,&MainWindow::close);
+    QObject::connect(ui->actionApropos,&QAction::triggered,this,&MainWindow::aPropos);
 
     mPortName=settings.value("PortName","").toString();
     mBaudrate=settings.value("BaudRate","9600").toString();
@@ -184,5 +186,12 @@ void MainWindow::majInfo()
             ui->cb_Serial->setCurrentIndex(ui->cb_Serial->findText(mPortName));
         }
 
+}
+
+void MainWindow::aPropos()
+{
+    QString sText=QString("%1\nUtilisaire de diffusion de trames séries vers UDP\n\nSources: https://github.com/MaximeGeay/SerialToUDP\n"
+                          "Maxime Geay\nNovembre 2023").arg(version);
+    QMessageBox::information(this,"Informations",sText);
 }
 

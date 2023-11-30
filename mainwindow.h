@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QVector>
+
 #include "udpdata.h"
 #include "sensordialog.h"
 
@@ -24,6 +24,7 @@ private slots:
      void clickOnConnect();
      void errorMsg(QString sMsg);
      void majInfo();
+     void aPropos();
 
 private:
     Ui::MainWindow *ui;
