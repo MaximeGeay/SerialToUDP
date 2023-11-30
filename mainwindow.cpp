@@ -191,7 +191,7 @@ void MainWindow::majInfo()
 void MainWindow::aPropos()
 {
     QString sText=QString("%1\nUtilisaire de diffusion de trames séries vers UDP\n\nSources: https://github.com/MaximeGeay/SerialToUDP\n"
-                          "Maxime Geay\nNovembre 2023").arg(version);
+                          "Développé avec Qt 5.14.1\nMaxime Geay\nNovembre 2023").arg(version);
     QMessageBox::information(this,"Informations",sText);
 }
 
